@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+
+
+	<script>
+
+
+		var student = {};
+		var students =[];
+		student.id = "111";
+		student.name="aaa";
+
+		students.push(student);
+
+		
+
+	</script>
+ </head>
+ <body>
+  
+ </body>
+</html>

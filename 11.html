@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+<script>
+
+	var students = null;
+	var student = null;
+	function init(){
+		student = function(id, name){
+			this.id = id;
+			this.name = name;
+		}
+		students = [];
+		students[0] = new student("id1", "hong1");
+		students[1] = new student("id2", "hong2");	
+
+		view_html();
+	}
+	function add_student(){
+		var new_id = document.getElementById("id").value;
+		var new_name = document.getElementById("name").value;
+		var new_student = new student(new_id, new_name);
+		students.push(new_student);
+
+		view_html();
+	}
+
+	function view_html(){
+		document.getElementById("listbody").innerHTML ="";
+		var strHTML = "";
+
+		for(var i=0;i<students.length;i++){
+		strHTML += "<tr>"
+		strHTML += "	<td width='400' align='center' height='40'>";
+		strHTML += students[i].id + " - "	+ students[i].name;
+		strHTML += "	</td>"
+		strHTML += "</tr>";
+		}
+
+		document.getElementById("listbody").innerHTML += strHTML;
+		}
+</script>
+	
+
+ </head>
+ <body onload="init()">
+  <table border="1" cellpadding="0" cellspacing="0" width="400">
+  	<tbody id="listbody">
+	
+		</tbody>
+	</table>
+  <table border="1" cellpadding="0" cellspacing="0" width="400">
+		<tr>
+			<td width="400" align="center" height="40">
+				<input type="text" id="id"/>
+				<input type="text" id="name"/>
+				<input type="button" value="추가" onclick="add_student()"/>
+			</td>
+		</tr>
+
+	</table>
+ </body>
+</html>

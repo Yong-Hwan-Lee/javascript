@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+	<script>
+		function aaa(){		//id를 사용해서 객체 참조
+			document.getElementById("a").innerHTML = "<font size ='4' color='red'>a</font>";	
+			document.getElementById("b").innerHTML = "<font size ='4' color='yellow'>b</font>";
+			document.getElementById("c").innerHTML = "<font size ='4' color='#74aa34'>c</font>";			
+		}
+
+		function bbb(){		//tagName을 사용해서 참조
+			var spanTags = document.getElementsByTagName("span");
+			spanTags[0].innerHTML = "<font size='7' color='red'>a</font>";
+			spanTags[1].innerHTML = "<font size='7' color='yellow'>b</font>";
+			spanTags[2].innerHTML = "<font size='7' color='red'>c</font>";
+		}
+
+		function ccc(){		//tagName을 사용해서 참조
+			var values = [];	// new Array();
+			values[0] = "a";
+			values[1] = 1234;
+			values[2] = 1.4956;
+
+			var divTag = document.getElementById("list");
+			
+
+			var spanTags = document.getElementsByTagName("span");
+
+			var strHTML = "";
+			for(var i=0;i<spanTags.length;i++){
+				strHTML += "<span><font size='7' color= 'red'>"+values[i]+"</span></font>";
+			}
+
+			divTag.innerHTML = strHTML;
+		}
+
+		function ddd(){	//name을 사용해서 참조하는 방법
+			var tags = document.getElementsByName("a");
+
+		}
+	</script>
+
+
+ </head>
+ <body>
+ 	<div>
+		<div id="list">
+			<span name="a">1</span>	<!--a-->
+			<span name="a">2</span>	<!--b-->
+			<span name="a">3</span>	<!--c-->
+		</div>
+		<div>
+			<input type="button" value="확인" onclick="ccc();" />
+		</div>	
+		<span>여기다 </span>
+	</div>
+
+ </body>
+</html>

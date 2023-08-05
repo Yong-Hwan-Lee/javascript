@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	//1.focus event : Tag(객체)에 cursor가 들어오면
+	//2.blur event : focus를 제거한다
+	function a_focus(){
+		alert("focus event");
+		//document.getElementById("pass").blur();
+		document.getElementById("jumin1").focus();
+	}
+
+	function j_check(){
+		//id jumin1 객체의 길이가 6이되면 cursor를 id jumin2로 이동
+		document.getElementById("show").innerHTML = document.getElementById("jumin1").value.length
+		if(document.getElementById("jumin1").value.length >= 6){
+			document.getElementById("jumin2").focus();
+		}
+	}
+
+	function num_check(obj){
+		
+		var permitVal = "0123456789";
+
+		var inputVal = obj.value;
+		
+		var perVal = "";
+		for(val i=0;i<inputVal.length;i++){
+			perVal = inputVal.substr(i, 1);			
+			if(permitVal.indexOf(perVal)==-1){
+				inputVal = inputVal.substr(0, i)
+			}
+		}
+
+		document.getElementById("jumin2").value = inputVal;
+	}
+
+	function checkbox_check(){
+
+		var a = 8
+		var i = a
+		i = 4;
+		//checkbox object들을 찾는다
+		var checkboxObjs = document.getElementsByName("hooby");
+
+		//위에서 참조된 checkbox 객체들의 checked 속성값을 검사하여 모두 false이면 ..
+		var isRst = true;
+		for (var i=0;i<checkboxObjs.length;i++){
+			if(checkboxObjs[i].checked==true){
+				isRist = false;
+			}
+		}
+
+		if (isRst)
+		{
+			alert("하나라도 체크");
+		}
+	}
+	//gender_func(0), gender_func(1),
+	function gender_func(idx){
+
+		var objs = document.getElementsByName("gender");
+		//참조된 객체의 모든 checkbox를 모두 푼다.
+		for(var i=0;i<objs.length;i++){
+			objs[i].checkded = false;
+		}
+		//선택된 checkbox만 선택표시한다.
+		objs[idx].checked = true;
+
+	}
+
+	function gender_func2(selectedObj){
+
+		var objs = document.getElementsByName("gender");
+		//참조된 객체의 모든 checkbox를 모두 푼다.
+		for(var i=0;i<objs.length;i++){
+			objs[i].checkded = false;
+		}
+		//선택된 checkbox만 선택표시한다.
+		selectedObj.checked = true;
+
+	}
+
+	//3. keypress : 
+	//4. keyup	  :
+	//5. keydown  :
+  </script>
+ </head>
+ <body>
+  <!-- javascript event, form tag -->
+  <form action="" method="">
+  	<div>
+		<input type="password" name="pass" onfocus="a_focus()"/>
+		<div id="show"></div>
+
+	</div>
+  	<div>
+		<input type="text" size="15" maxlength="6" name="jumin1" id="jumin1" onkeyup="j_check()"/>
+		-
+		<input type="text" size="15" maxlength="7" name="jumin2" id="jumin2" onkeyup="num_check(this)"/>
+	</div>
+	<div>
+		<label><input type="checkbox" name="hobby" value="E" /> 운동</label>
+		<label><input type="checkbox" name="hobby" checked=""	value="M" /> 음악감상</label>
+		<label><input type="checkbox" name="hobby" checked="" value="V"/> 영화</label>
+	</div>
+	<!--
+	<div>
+		<label><input type="radio" name="gender" value="M" checked/> 남자</label>
+		<label><input type="radio" name="gender" value="F" /> 여자</label>
+	</div>
+	-->
+
+	<div>
+		<label><input type="checkbox" name="gender" value="M" onclick="gender_func2(this)"/> 남자</label>
+		<label><input type="checkbox" name="gender" value="F" onclick="gender_func2(this)"/> 여자</label>
+		<label><input type="checkbox" name="gender" value="E" onclick="gender_func2(this)"/> 기타</label>
+	</div>
+	
+
+	<div>	<!-- combobox -->
+		<select name="city">
+			<option value="">----선택----</option>
+			<option value="S">----서울----</option>
+			<option value="P">----부산----</option>
+			<option value="D">----대구----</option>
+		</select>
+	</div>
+	<div>
+		<textarea  name="content" style="width:700px; height:300px; border:1px solid blue; font-size:30px; "></textarea>
+	</div>
+	<div>
+		<input type="button" value="확인" onclick="checkbox_check()"/>
+	</div>
+  </form>
+ </body>
+</html>
